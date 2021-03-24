@@ -53,11 +53,17 @@ cd <project-dir>
 mkdir -p build && cd build && cmake .. && cmake --build .
 ```
 
-Генерация тестовых данных в формате [comma-seperated values (CSV)](https://en.wikipedia.org/wiki/Comma-separated_values):
+Генерация тестового набора данных в формате [comma-seperated values (CSV)](https://en.wikipedia.org/wiki/Comma-separated_values):
 ```shell
-cd dataset && python generate_csv_bench_dataset [args ...] 
+cd dataset && python generate_csv_bench_dataset [args ...] --out remove_bench_dataset.csv
 ```
 
+Возможные аргументы:
+- `--samples` - кол-во генерируемых элементов;
+- `--out` - название выходного файла;
+- и т.д.
+
+Запуск контрольных тестов:
 
 
 ## Источники
