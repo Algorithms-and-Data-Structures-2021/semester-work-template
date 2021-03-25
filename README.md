@@ -51,7 +51,7 @@ git clone https://github.com/Algorithms-and-Data-Structures-2021/semester-work-t
 
 Сборка проекта осуществляется средствами [*CMake*](https://cmake.org/). 
 
-Для сборки проекта в терминале необходмо ввести следующие команды:
+Для сборки проекта в терминале необходимо ввести следующие команды:
 ```shell
 # переход в папку с проектом
 cd C:\Users\AlgoDude\Projects\semester-work-template
