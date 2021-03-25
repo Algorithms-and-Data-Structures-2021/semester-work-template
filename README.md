@@ -66,7 +66,7 @@ cd C:\Users\AlgoDude\Projects\semester-work-template
 mkdir -p build && cd build 
 
 # сборка проекта
-cmake .. -DCMAKE_BUILD_TYPE=RelWithDebInfo && cmake --config $BUILD_TYPE --build . 
+cmake .. -DCMAKE_BUILD_TYPE=RelWithDebInfo && cmake --config RelWithDebInfo --build . 
 ```
 
 #### Генерация тестовых данных
