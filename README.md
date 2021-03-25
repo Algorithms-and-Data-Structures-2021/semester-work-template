@@ -40,18 +40,23 @@ _Инструкция сборки проекта, генерации тесто
 
 _Постарайтесь написать инструкцию так, чтобы незнакомый с проектом человек смог самостоятельно всё запустить._
 
-**Пример (Windows)**
+### Пример (Windows)
 
-Склонируйте проект к себе на компьютер через [Git Bash](https://gitforwindows.org/) (либо используйте встроенные средства среды разработки):
+#### Сборка проекта
+
+Склонируйте проект к себе на компьютер через [Git for Windows](https://gitforwindows.org/) (либо используйте встроенные средства среды разработки):
 ```shell
 git clone https://github.com/Algorithms-and-Data-Structures-2021/semester-work-template.git
 ```
 
-Сборка *CMake* проекта в терминале (из папки проекта):
+Сборка проекта осуществляется средствами [*CMake*](https://cmake.org/). 
+
+Для сборки проекта в терминале введите (из папки проекта, например `C:\Users\AlgoDude\Projects\semester-work-b-plus-tree`):
 ```shell
-cd <project-dir>
-mkdir -p build && cd build && cmake .. && cmake --build .
+mkdir -p build-release && cd build && cmake .. -DCMAKE_BUILD_TYPE=RelWithDebInfo && cmake --config $BUILD_TYPE --build . 
 ```
+
+#### Генерация тестовых данных
 
 Генерация тестового набора данных в формате [comma-seperated values (CSV)](https://en.wikipedia.org/wiki/Comma-separated_values):
 ```shell
