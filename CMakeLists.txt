@@ -19,6 +19,14 @@ add_library(project_warnings INTERFACE)
 include(cmake/CompilerWarnings.cmake)   # добавление содержимого CompilerWarnings.cmake в этот файл
 set_project_warnings(project_warnings)  # set_project_warnings - определена в файле cmake/CompilerWarnings.cmake
 
+# === Добавление переменных пути (target) ===
+add_library(project_paths INTERFACE)
+
+target_compile_definitions(project_paths INTERFACE
+        PROJECT_SOURCE_DIR="${CMAKE_SOURCE_DIR}"
+        PROJECT_DATASET_DIR="${CMAKE_SOURCE_DIR}/dataset/data")
+
+
 # Примечание: параметры компиляции будут задействованы для всех библиотек и исполняемых файлов,
 # которые линкуются с данной интерфейсной библиотекой.
 
