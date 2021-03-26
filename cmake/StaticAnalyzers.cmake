@@ -10,6 +10,7 @@ if (ENABLE_CPPCHECK)
                 --enable=all
                 --inline-suppr
                 --inconclusive
+                ${CMAKE_SOURCE_DIR}
                 # -i ${CMAKE_SOURCE_DIR}
                 )
     else ()
