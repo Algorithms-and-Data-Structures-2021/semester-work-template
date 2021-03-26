@@ -11,6 +11,7 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # === "Включение" предупреждений компилятора (target) ===
+# Предупреждения полезны тем, что они позволяют обнаружить потенциальные баги в вашем коде.
 
 # создание интерфейсной библиотеки (т.е. библиотеки без исходных файлов)
 add_library(project_warnings INTERFACE)
@@ -19,6 +20,9 @@ add_library(project_warnings INTERFACE)
 include(cmake/CompilerWarnings.cmake)   # добавление содержимого CompilerWarnings.cmake в этот файл
 set_project_warnings(project_warnings)  # set_project_warnings - определена в файле cmake/CompilerWarnings.cmake
 
+# Примечание: теперь мы можем линковать project_warnings с другими библиотеками и исполняемыми файлами,
+# тем самым "включая" у них предупреждения компилятора.
+
 # === Добавление переменных пути (target) ===
 add_library(project_paths INTERFACE)
 
@@ -26,13 +30,9 @@ target_compile_definitions(project_paths INTERFACE
         PROJECT_SOURCE_DIR="${CMAKE_SOURCE_DIR}"
         PROJECT_DATASET_DIR="${CMAKE_SOURCE_DIR}/dataset/data")
 
-
-# Примечание: параметры компиляции будут задействованы для всех библиотек и исполняемых файлов,
-# которые линкуются с данной интерфейсной библиотекой.
-
 # === Библиотека со структурой данных (target) ===
+# Это самое главное, что вы должны реализовать в рамках семестрового проекта.
 
-# синтаксис add_library(<название библиотеки (target)> <тип библиотеки> <список исходных и заголовочных файлов>)
 add_library(${PROJECT_NAME} STATIC
         src/data_structure.cpp
         include/data_structure.hpp)
@@ -47,7 +47,7 @@ target_include_directories(${PROJECT_NAME} PUBLIC include)
 
 add_subdirectory(dataset)
 add_subdirectory(examples)
-#add_subdirectory(benchmark)
+add_subdirectory(benchmark)
 
 # === main (target) ===
 add_executable(main main.cpp)

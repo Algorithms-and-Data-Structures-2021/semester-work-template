@@ -1,9 +1,9 @@
-# path to benchmark datasets
-set(DATASET_PATH "${PROJECT_SOURCE_DIR}/dataset")
+# Здесь вы можете создавать свои исполняемые файлы (executables)
+# исполянемый файл = контрольный тест
 
-add_library(benchmark_definitions INTERFACE)
-target_compile_definitions(benchmark_definitions INTERFACE DATASET_PATH=${DATASET_PATH})
-
-# add benchmark targets here ...
+# Пример создания контрольного теста (исполняемого файла) под названием demo_benchmark.
+# Исходный код предоставлен в файле demo_benchmark.cpp текущей директории.
 add_executable(demo_benchmark demo_benchmark.cpp)
-target_link_libraries(demo_benchmark PRIVATE benchmark_definitions ${PROJECT_NAME})
+
+# Примечание: Не забываем подключить (прилинковать) библиотеку ${PROJECT_NAME} с реализацией структуры данных.
+target_link_libraries(demo_benchmark PRIVATE project_paths project_warnings ${PROJECT_NAME})
