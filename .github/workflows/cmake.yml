@@ -23,10 +23,6 @@ jobs:
         with:
           submodules: 'recursive'
 
-      - name: Install code analysis tools
-        shell: bash
-        run: sudo apt-get update && sudo apt-get install cppcheck clang-tidy
-
       - name: Create Build Environment
         shell: bash
         run: cmake -E make_directory ${{github.workspace}}/build
@@ -39,9 +35,4 @@ jobs:
       - name: Build
         shell: bash
         run: cmake --build . --config $BUILD_TYPE
-        working-directory: ${{github.workspace}}/build
-
-      - name: Run tests
-        shell: bash
-        run: ctest -C $BUILD_TYPE
         working-directory: ${{github.workspace}}/build

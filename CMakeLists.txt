@@ -10,11 +10,6 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_EXTENSIONS OFF)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-# === Опции (флаги) ===
-
-option(ENABLE_TESTING "Build unit tests" FALSE)
-option(ENABLE_STATIC_CODE_ANALYSIS "Static code analysis during build" TRUE)
-
 # === "Включение" предупреждений компилятора (target) ===
 
 # создание интерфейсной библиотеки (т.е. библиотеки без исходных файлов)
@@ -46,17 +41,6 @@ add_subdirectory(dataset)
 add_subdirectory(examples)
 #add_subdirectory(benchmark)
 
-# === Тестирование ===
-
-if (ENABLE_TESTING)
-    enable_testing()         # включить генерацию тестовых файлов
-    add_subdirectory(tests)
-endif ()
-
 # === main (target) ===
 add_executable(main main.cpp)
 target_link_libraries(main PRIVATE project_warnings ${PROJECT_NAME})
-
-if (ENABLE_STATIC_CODE_ANALYSIS)
-    include(cmake/StaticAnalyzers.cmake)
-endif ()
