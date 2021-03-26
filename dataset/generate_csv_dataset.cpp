@@ -4,6 +4,7 @@
 #include <string>       // string, getline
 #include <string_view>  // string_view
 #include <random>       // mt19937_64, random_device
+#include <chrono>       // system_clock
 
 using namespace std;
 
@@ -41,13 +42,15 @@ int main(int argc, char** argv) {
 
   // генерация набора данных (пример)
   auto output_stream = ofstream{path + "/dataset-generated.csv", ios::ios_base::app};
-  auto engine = mt19937_64{random_device{}()};
+
+  const auto seed = chrono::system_clock::now().time_since_epoch().count();
+  auto engine = mt19937{seed};  // без seed`а генератор будет выдавать одни не случайные значения
   auto dist = uniform_int_distribution(0, 10);
 
   if (output_stream) {
-   for (int counter = 0; counter < 10; counter++) {
-     output_stream << dist(engine) << ',';
-   }
+    for (int counter = 0; counter < 10; counter++) {
+      output_stream << dist(engine) << ',';
+    }
     output_stream << dist(engine) << '\n';
   }
 
