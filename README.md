@@ -1,6 +1,11 @@
 # Название семестровой работы
 
-![Build status](https://github.com/Algorithms-and-Data-Structures-2021/semester-work-template/actions/workflows/cmake.yml/badge.svg)
+[comment]: <> (![Build status]&#40;https://github.com/Algorithms-and-Data-Structures-2021/semester-work-template/actions/workflows/cmake.yml/badge.svg&#41;)
+
+<a href="https://github.com/Algorithms-and-Data-Structures-2021/semester-work-template/actions">
+  <img alt="CMake build status" 
+       src="https://github.com/Algorithms-and-Data-Structures-2021/semester-work-template/actions/workflows/cmake.yml/badge.svg">
+</a>
 
 _Краткое описание семестрового проекта. Следует отразить информацию по следующим пунктам:_
 
@@ -33,7 +38,6 @@ _Описание основных частей семестрового про�
   поиска и пр.);
 - [`examples`](examples) - примеры работы со структурой данных (желательно предоставить решение какой-либо задачи);
 - [`dataset`](dataset) - набор данных для запуска контрольных тестов;
-- [`tests`](tests) - модульные и IO тесты.
 
 ## Требования (prerequisites)
 
