@@ -3,7 +3,7 @@
 name: CI
 
 # Controls when the action will run
-on: [push, pull_request, workflow_dispatch]
+on: [ push, pull_request, workflow_dispatch ]
 
 env:
   # Customize the CMake build type here (Release, Debug, RelWithDebInfo, etc.)
@@ -23,6 +23,10 @@ jobs:
         with:
           submodules: 'recursive'
 
+      - name: Install code analysis tools
+        shell: bash
+        run: sudo apt-get update && sudo apt-get install cppcheck clang-tidy
+
       - name: Create Build Environment
         shell: bash
         run: cmake -E make_directory ${{github.workspace}}/build
@@ -31,8 +35,13 @@ jobs:
         shell: bash
         working-directory: ${{github.workspace}}/build
         run: cmake $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE=$BUILD_TYPE
-        
+
       - name: Build
         shell: bash
         run: cmake --build . --config $BUILD_TYPE
+        working-directory: ${{github.workspace}}/build
+
+      - name: Run tests
+        shell: bash
+        run: ctest -VVV
         working-directory: ${{github.workspace}}/build

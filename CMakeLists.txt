@@ -10,15 +10,14 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_EXTENSIONS OFF)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-# === Опции сборки проекта (флаги) ===
+# === Опции (флаги) ===
 
-# синтаксис: option(<название опции> <описание> <TRUE или FALSE>)
 option(ENABLE_TESTING "Build unit tests" FALSE)
+option(ENABLE_STATIC_CODE_ANALYSIS "Static code analysis during build" TRUE)
 
 # === "Включение" предупреждений компилятора (target) ===
 
 # создание интерфейсной библиотеки (т.е. библиотеки без исходных файлов)
-# синтаксис: add_library(<название библиотеки (target)> INTERFACE)
 add_library(project_warnings INTERFACE)
 
 # установка параметров компиляции для библиотеки
@@ -35,12 +34,10 @@ add_library(${PROJECT_NAME} STATIC
         src/data_structure.cpp
         include/data_structure.hpp)
 
-# включить предупреждения компилятора для библиотеки
-# синтаксис: target_link_libraries(<название библиотеки (target)> <спецификатор> <список библиотек (targets)>)
+# включить предупреждения компилятора для библиотеки (линковка)
 target_link_libraries(${PROJECT_NAME} PRIVATE project_warnings)
 
 # обозначить директорию с заголовочными файлами для библиотеки
-# синтаксис: target_include_directories(<название библиотеки (target)> <спецификатор> <директория>)
 target_include_directories(${PROJECT_NAME} PUBLIC include)
 
 # === Подключение подмодулей проекта ===
@@ -53,9 +50,13 @@ add_subdirectory(examples)
 
 if (ENABLE_TESTING)
     enable_testing()         # включить генерацию тестовых файлов
-    add_subdirectory(tests)  # подмодуль с тестами
+    add_subdirectory(tests)
 endif ()
 
 # === main (target) ===
 add_executable(main main.cpp)
 target_link_libraries(main PRIVATE project_warnings ${PROJECT_NAME})
+
+if (ENABLE_STATIC_CODE_ANALYSIS)
+    include(cmake/StaticAnalyzers.cmake)
+endif ()
