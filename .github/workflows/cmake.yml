@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: CI
+name: CMake
 
 # Controls when the action will run
 on: [ push, pull_request, workflow_dispatch ]
@@ -43,5 +43,5 @@ jobs:
 
       - name: Run tests
         shell: bash
-        run: ctest -VVV
+        run: ctest -C $BUILD_TYPE
         working-directory: ${{github.workspace}}/build
