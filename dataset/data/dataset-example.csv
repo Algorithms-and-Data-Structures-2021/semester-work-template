@@ -1,2 +1,5 @@
-0,1996,"Ramil Safin","Cool teacher","Loves his students","Hates steamed cabbage","Binary search trees"
-1,1997,"Abbyasov Bulat","Software engineer","Likes to talk","Will be","B+ trees"
+id, full_name
+0, "Ramil Safin"
+1, "Bulat Abbyasov"
+2, "Artur Shafikov"
+3, "Liliya Gavrilova"
