@@ -1,11 +1,6 @@
 # Название семестровой работы
 
-[comment]: <> (![Build status]&#40;https://github.com/Algorithms-and-Data-Structures-2021/semester-work-template/actions/workflows/cmake.yml/badge.svg&#41;)
-
-<a href="https://github.com/Algorithms-and-Data-Structures-2021/semester-work-template/actions">
-  <img alt="CMake build status" 
-       src="https://github.com/Algorithms-and-Data-Structures-2021/semester-work-template/actions/workflows/cmake.yml/badge.svg">
-</a>
+[![CMake](https://github.com/Algorithms-and-Data-Structures-2021/semester-work-template/actions/workflows/cmake.yml/badge.svg)](https://github.com/Algorithms-and-Data-Structures-2021/semester-work-template/actions)
 
 _Краткое описание семестрового проекта. Следует отразить информацию по следующим пунктам:_
 
