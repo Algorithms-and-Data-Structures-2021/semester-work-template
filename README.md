@@ -100,7 +100,7 @@ _Разрешается использовать собственный форм
 cd dataset
 
 # запуск Python-скрипта
-python generate_csv_bench_dataset --samples 1000 <output> [args ...]
+python generate_csv_bench_dataset.py --samples 1000 <output> [args ...]
 ```
 
 - `--samples` - количество генерируемых элементов;
